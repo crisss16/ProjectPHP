@@ -77,56 +77,85 @@ if ($result) {
 $jsonData = json_encode($data);
       ?>
 
-       
-        <div class="card mx-auto" style="width: 18rem;">
-  <img src= <?php echo $row['image_path']?> class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">  <?php echo $row['title']?></h5>
-    <p class="card-text">  <?php echo $row['description']?></p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-</div>
-
-    <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-molecular">
-        <div class="portfolio-wrap">
-            <img src="imagini/hpv1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-                <h4>HPV</h4>
-                <p>Self-collection HPV test</p>
-                <div class="portoflio-links">
-                    <a href="imagini/hpv1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="surepath"><i class="bx bx-plus"></i></a>
+    <div class="row filterCard" data-category="citologie">
+        <div class="mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">citologie</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+       </div>
+    <div class="row filterCard" data-category="molecular">
+        <div class=" mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">molecular</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-lg-4 col-md-6 portfolio-item filter-biopsii">
-        <div class="portfolio-wrap">
-            <img src="imagini/biopsii.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-                <h4>Biopsie</h4>
-                <p>Biopsie</p>
-                <div class="portoflio-links">
-                    <a href="imagini/biopsii.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="surepath"><i class="bx bx-plus"></i></a>
+    <div class="row filterCard"  data-category="biopsii">
+        <div class=" mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">biopsii</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-lg-4 col-md-6 portfolio-item filter-citologie">
-        <div class="portfolio-wrap">
-            <img src="imagini/thinprep.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-                <h4>Cito</h4>
-                <p>Thinprep</p>
-                <div class="portoflio-links">
-                    <a href="imagini/thinprep.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="surepath"><i class="bx bx-plus"></i></a>
+    <div class="row filterCard" data-category="citologie">
+        <div class="mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">citologie</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+    <div class="row filterCard" data-category="molecular">
+        <div class=" mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">molecular</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row filterCard" data-category="molecular">
+        <div class=" mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">molecular</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row filterCard" data-category="citologie">
+        <div class=" mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">citologie</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
  </section>
 
  <footer class="page-footer">
@@ -156,68 +185,32 @@ $jsonData = json_encode($data);
         document.getElementById('menuHidded').classList.toggle('active');
      })
 
-     document.addEventListener('DOMContentLoaded', function() {
-        // Isotope initialization
-        var iso = new Isotope('.portfolio-container', {
-            itemSelector: '.portfolio-item',
-            layoutMode: 'fitRows'
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const contentItems = document.querySelectorAll('.filterCard');
+
+    // Add event listeners to each filter button
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get the value of the data-filter attribute of the clicked button
+            const filterValue = button.getAttribute('data-filter');
+
+            // Loop through all content items
+            contentItems.forEach(item => {
+                // If filter is 'all', show all items
+                if (filterValue === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    // If filter is not 'all', show items that match the filter
+                    if (item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
         });
-    
+    });
 
-        //Filter items on button click
-        var filtersElem = document.querySelector('.portfolio-filters');
-        filtersElem.addEventListener('click', function(event) {
-            if (!event.target.matches('button')) {
-                return;
-            }
-            var filterValue = event.target.getAttribute('data-filter');
-            iso.arrange({ filter: filterValue });
-        });
-
-        //change is-checked class on buttons
-        var buttonGroups = document.querySelectorAll('.portfolio-filters');
-        for (var i=0, len = buttonGroups.length; i < len; i++) {
-            var buttonGroup = buttonGroups[i];
-            buttonGroup.addEventListener('click', function(event) {
-                if (!event.target.matches('button')) {
-                return;
-            }
-            var buttons = buttonGroup.querySelectorAll('.filter-button');
-            for (var j=0, btnsLen = buttons.length; j < btnsLen; j++) {
-                buttons[j].classList.remove('is-checked');
-            }
-            event.target.classList.add('is-checked');
-        });
-    }
-});
-
-        // const filterButtons=document.querySelectorAll('.filter-button');
-        // const portfolioItems=document.querySelectorAll('.portfolio-item');
-
-        // filterButtons.forEach(button => {
-        //     button.addEventListener('click', () => {
-        //         const filter = button.getAttribute('data-filter');
-
-        //         portfolioItems.forEach(item => {
-        //             if (filter === 'all') {
-        //                 item.classList.add('show');
-        //             } else {
-        //                 if(item.classList.contains('filter-${filter}')) {
-        //                     item.classList.add('show');
-        //                 } else {
-        //                     item.classList.remove('show');
-        //                 }
-        //             }
-        //         });
-        //     }) ;
-        // });
-
-        //Show all items by default
-        document.querySelector('[data-filter="all"]').click();
-        var portfolioItems = <?php echo $jsonData; ?>;
-        
-        // Afișăm datele în consola browser-ului
-        console.log(portfolioItems);
  </script>
 </body>
 </html>

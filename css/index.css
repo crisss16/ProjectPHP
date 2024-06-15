@@ -105,11 +105,11 @@ color: black;
   background-color: #ff85c8;
 }
 
-.portfolio-contaiiner {
+.portfolio-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-evenly;
+  gap: 5em;
   padding: 10px;
 }
 
